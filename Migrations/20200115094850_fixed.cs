@@ -2,10 +2,23 @@
 
 namespace WebShop.Migrations
 {
-    public partial class AddedOLI : Migration
+    public partial class @fixed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Colors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ColorName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Colors", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
@@ -28,12 +41,25 @@ namespace WebShop.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ArticleName = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Stock = table.Column<int>(nullable: false),
-                    Price = table.Column<int>(nullable: false)
+                    Price = table.Column<int>(nullable: false),
+                    Image = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sizes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    SizeName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sizes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,6 +70,7 @@ namespace WebShop.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     OrderId = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false),
+                    Size = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -64,24 +91,39 @@ namespace WebShop.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Colors",
+                columns: new[] { "Id", "ColorName" },
+                values: new object[] { 1, "Red" });
+
+            migrationBuilder.InsertData(
+                table: "Colors",
+                columns: new[] { "Id", "ColorName" },
+                values: new object[] { 2, "Blue" });
+
+            migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "Customer", "TotalCost" },
                 values: new object[] { 1, "Daniel", 0 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "ArticleName", "Description", "Price", "Stock" },
-                values: new object[] { 1, "Circle", null, 25, 2 });
+                columns: new[] { "Id", "ArticleName", "Description", "Image", "Price" },
+                values: new object[] { 1, "Circle", null, null, 25 });
+
+            migrationBuilder.InsertData(
+                table: "Sizes",
+                columns: new[] { "Id", "SizeName" },
+                values: new object[] { 1, "XL" });
 
             migrationBuilder.InsertData(
                 table: "OrderLineItem",
-                columns: new[] { "Id", "OrderId", "ProductId", "Quantity" },
-                values: new object[] { 1, 1, 1, 1 });
+                columns: new[] { "Id", "OrderId", "ProductId", "Quantity", "Size" },
+                values: new object[] { 1, 1, 1, 1, null });
 
             migrationBuilder.InsertData(
                 table: "OrderLineItem",
-                columns: new[] { "Id", "OrderId", "ProductId", "Quantity" },
-                values: new object[] { 2, 1, 1, 3 });
+                columns: new[] { "Id", "OrderId", "ProductId", "Quantity", "Size" },
+                values: new object[] { 2, 1, 1, 3, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderLineItem_OrderId",
@@ -97,7 +139,13 @@ namespace WebShop.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Colors");
+
+            migrationBuilder.DropTable(
                 name: "OrderLineItem");
+
+            migrationBuilder.DropTable(
+                name: "Sizes");
 
             migrationBuilder.DropTable(
                 name: "Orders");

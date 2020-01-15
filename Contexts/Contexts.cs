@@ -6,11 +6,28 @@ namespace WebShop.Contexts {
     public class ShopContext : DbContext {
         public DbSet<Product> Products {get;set;}
         public DbSet<Order> Orders {get;set;}
+        public DbSet<Size> Sizes {get;set;}
+        public DbSet<Color> Colors {get;set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source = webshop.db");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            modelBuilder.Entity<Size>().HasData(new Size{
+                Id = 1,
+                SizeName = "XL",
+            });
+
+            modelBuilder.Entity<Color>().HasData(new Color {
+                Id = 1,
+                ColorName = "Red",
+            });
+
+            modelBuilder.Entity<Color>().HasData(new Color {
+                Id = 2,
+                ColorName = "Blue",
+            });
+
             modelBuilder.Entity<Product>().HasData(new Product{
                 Id = 1,
                 ArticleName = "Circle",
@@ -27,6 +44,7 @@ namespace WebShop.Contexts {
                 OrderId = 1,
                 ProductId = 1,
                 Quantity = 1,
+                Size = "M",
             });
 
             modelBuilder.Entity<OrderLineItem>().HasData(new OrderLineItem{
@@ -34,6 +52,7 @@ namespace WebShop.Contexts {
                 OrderId = 1,
                 ProductId = 1,
                 Quantity = 3,
+                Size = "XL",
             });
             
         }
