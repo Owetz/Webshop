@@ -24,7 +24,7 @@ namespace WebShop.Controllers
         {
             using (ShopContext context = new ShopContext())
             {
-                return context.Orders.Include(o => o.OrderLineItems).ToList();
+                return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).ToList();
             }
         }
     }

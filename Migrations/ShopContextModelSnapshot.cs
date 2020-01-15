@@ -15,6 +15,32 @@ namespace WebShop.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0");
 
+            modelBuilder.Entity("WebShop.Models.Color", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ColorName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ColorName = "Red"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ColorName = "Blue"
+                        });
+                });
+
             modelBuilder.Entity("WebShop.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -55,6 +81,9 @@ namespace WebShop.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Size")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
@@ -92,10 +121,10 @@ namespace WebShop.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Image")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("Stock")
+                    b.Property<int>("Price")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -107,8 +136,28 @@ namespace WebShop.Migrations
                         {
                             Id = 1,
                             ArticleName = "Circle",
-                            Price = 25,
-                            Stock = 2
+                            Price = 25
+                        });
+                });
+
+            modelBuilder.Entity("WebShop.Models.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("SizeName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sizes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            SizeName = "XL"
                         });
                 });
 
