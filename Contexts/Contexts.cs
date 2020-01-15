@@ -30,8 +30,16 @@ namespace WebShop.Contexts {
 
             modelBuilder.Entity<Product>().HasData(new Product{
                 Id = 1,
-                ArticleName = "Circle",
+                ArticleName = "Square",
                 Price = 25,
+                Description = "This is a Cirle, a beautiful circle at that.",
+            });
+
+            modelBuilder.Entity<Product>().HasData(new Product{
+                Id = 2,
+                ArticleName = "Circle",
+                Price = 30,
+                Description = "This is a Cirle, a beautiful circle at that.",
             });
 
             modelBuilder.Entity<Order>().HasData(new Order{

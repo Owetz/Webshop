@@ -27,5 +27,23 @@ namespace WebShop.Controllers
                 return context.Products.ToList();
             }
         }
+
+        [HttpGet("{id}")]
+        public Product Get(int id)
+        {
+            using(ShopContext context = new ShopContext()){
+                return context.Products.Find(id);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Product newProduct) {
+            using(ShopContext context = new ShopContext()) {
+                context.Products.Add(newProduct);
+                context.SaveChanges();
+            }
+
+            return Created("/products", newProduct);
+        }
     }
 }
