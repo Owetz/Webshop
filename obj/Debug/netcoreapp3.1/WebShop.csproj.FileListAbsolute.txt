@@ -88,3 +88,6 @@ C:\Users\Daniel\Desktop\Webshop\obj\Debug\netcoreapp3.1\WebShop.RazorTargetAssem
 C:\Users\Daniel\Desktop\Webshop\obj\Debug\netcoreapp3.1\WebShop.csproj.CopyComplete
 C:\Users\Daniel\Desktop\Webshop\obj\Debug\netcoreapp3.1\WebShop.dll
 C:\Users\Daniel\Desktop\Webshop\obj\Debug\netcoreapp3.1\WebShop.pdb
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\package-lock.json
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\package.json
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\public\manifest.json
