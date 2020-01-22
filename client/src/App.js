@@ -1,25 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './Components/NavBar/NavBar';
+import Admin from './Components/Admin/Admin';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-function App() {
+try {
+  fetch('https://localhost:5001/products').then(res => res.json()).then(res => console.log(res));
+} catch (error) {
+  console.log(error);
+}
+
+try {
+  fetch('https://localhost:5001/products/1').then(res => res.json()).then(res => console.log(res));
+} catch (error) {
+  console.log(error)
+}
+
+//Should save something in localstorage to bind this browser to this account.
+//user = {"seed":1231241, "email":"daniel@ahl.se"}; 
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+      <NavBar />
+      <Switch>
+          <Route path="/account">
+            <h2>Hello!</h2>
+          </Route>
+          <Route path="/cart">
+            <h2>GoodBye!</h2>
+          </Route>
+          <Route path="/admin">
+            <Admin />
+          </Route>
+          <Route path="/">
+            Hello World
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 

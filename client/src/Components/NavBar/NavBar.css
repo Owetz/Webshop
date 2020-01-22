@@ -1,0 +1,22 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    position: -webkit-sticky;
+}
+
+a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: black;
+    font-family: Roboto;
+}
+
+.logo {
+    font-size:2rem;
+}
+
+.logo a {
+    font-family: Julee;
+}
