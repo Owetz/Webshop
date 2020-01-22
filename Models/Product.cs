@@ -11,7 +11,7 @@ namespace WebShop.Models
         public string Description {get;set;}
         //public List<Size> Sizes { get; set; }
         //public List<Color> Colors { get; set; }
-        public int Price {get;set;}
+        public string Price {get;set;}
         [DefaultValue("/images/test.jpg")]
         public string Image {get;set;}
         //public List<String> Sizes {get;set;}

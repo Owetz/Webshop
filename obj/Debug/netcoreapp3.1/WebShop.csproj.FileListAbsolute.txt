@@ -91,3 +91,14 @@ C:\Users\Daniel\Desktop\Webshop\obj\Debug\netcoreapp3.1\WebShop.pdb
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\package-lock.json
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\package.json
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\public\manifest.json
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll

@@ -8,14 +8,14 @@ using WebShop.Contexts;
 namespace WebShop.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20200115094850_fixed")]
-    partial class @fixed
+    [Migration("20200122113751_changedAlittle")]
+    partial class changedAlittle
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.0");
+                .HasAnnotation("ProductVersion", "3.1.1");
 
             modelBuilder.Entity("WebShop.Models.Color", b =>
                 {
@@ -52,9 +52,6 @@ namespace WebShop.Migrations
                     b.Property<string>("Customer")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TotalCost")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
@@ -63,8 +60,7 @@ namespace WebShop.Migrations
                         new
                         {
                             Id = 1,
-                            Customer = "Daniel",
-                            TotalCost = 0
+                            Customer = "Daniel"
                         });
                 });
 
@@ -100,14 +96,16 @@ namespace WebShop.Migrations
                             Id = 1,
                             OrderId = 1,
                             ProductId = 1,
-                            Quantity = 1
+                            Quantity = 1,
+                            Size = "M"
                         },
                         new
                         {
                             Id = 2,
                             OrderId = 1,
                             ProductId = 1,
-                            Quantity = 3
+                            Quantity = 3,
+                            Size = "XL"
                         });
                 });
 
@@ -126,8 +124,8 @@ namespace WebShop.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Price")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -137,8 +135,16 @@ namespace WebShop.Migrations
                         new
                         {
                             Id = 1,
+                            ArticleName = "Square",
+                            Description = "This is a Cirle, a beautiful circle at that.",
+                            Price = "25"
+                        },
+                        new
+                        {
+                            Id = 2,
                             ArticleName = "Circle",
-                            Price = 25
+                            Description = "This is a Cirle, a beautiful circle at that.",
+                            Price = "30"
                         });
                 });
 
