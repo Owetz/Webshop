@@ -1,0 +1,28 @@
+article.productView {
+    display: flex;
+    padding: 3rem 0;
+}
+
+article.productView div.productInformation {
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+article.productView img.productImage {
+    width: 400px;
+}
+
+.productInformation form {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 10rem;
+}
+
+.productInformation form label {
+    display: flex;
+    justify-content: space-between;
+    width: 10rem;
+}

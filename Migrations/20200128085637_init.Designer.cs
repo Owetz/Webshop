@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShop.Contexts;
 
 namespace WebShop.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    partial class ShopContextModelSnapshot : ModelSnapshot
+    [Migration("20200128085637_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,17 +143,15 @@ namespace WebShop.Migrations
                         new
                         {
                             Id = 1,
-                            ArticleName = "Pig",
-                            Description = "Origami pig, beautiful - right?",
-                            Image = "pig.jpg",
+                            ArticleName = "Square",
+                            Description = "This is a Cirle, a beautiful circle at that.",
                             Price = "25"
                         },
                         new
                         {
                             Id = 2,
-                            ArticleName = "Birds",
-                            Description = "Origami Birds, lovely indeed..",
-                            Image = "birds.jpg",
+                            ArticleName = "Circle",
+                            Description = "This is a Cirle, a beautiful circle at that.",
                             Price = "30"
                         });
                 });

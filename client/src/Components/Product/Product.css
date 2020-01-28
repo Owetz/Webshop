@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+}
+.productCard {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.productCard a {
+    margin: 0;
+}
+
+.productCard a.productName {
+    font-weight: 700;
+}
+.productCard img.productImage {
+    width: 20rem;
+}

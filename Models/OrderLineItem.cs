@@ -7,7 +7,12 @@ namespace WebShop.Models {
         public int ProductId {get;set;}
         [JsonIgnore]
         public Product Product {get;set;}
-        public string Size {get;set;}
+        public int ColorId;
+        [JsonIgnore]
+        public Color Color {get;set;}
+        public int SizeId {get;set;}
+        [JsonIgnore]
+        public Size Size {get;set;}
         public int Quantity {get;set;}
         public int Price => (int)(int.Parse(Product.Price) * Quantity);
     }

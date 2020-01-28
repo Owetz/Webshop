@@ -2,7 +2,7 @@
 
 namespace WebShop.Migrations
 {
-    public partial class changedAlittle : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,12 +69,19 @@ namespace WebShop.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     OrderId = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false),
-                    Size = table.Column<string>(nullable: true),
+                    ColorId1 = table.Column<int>(nullable: true),
+                    SizeId = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderLineItem", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrderLineItem_Colors_ColorId1",
+                        column: x => x.ColorId1,
+                        principalTable: "Colors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_OrderLineItem_Orders_OrderId",
                         column: x => x.OrderId,
@@ -85,6 +92,12 @@ namespace WebShop.Migrations
                         name: "FK_OrderLineItem_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderLineItem_Sizes_SizeId",
+                        column: x => x.SizeId,
+                        principalTable: "Sizes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -121,13 +134,18 @@ namespace WebShop.Migrations
 
             migrationBuilder.InsertData(
                 table: "OrderLineItem",
-                columns: new[] { "Id", "OrderId", "ProductId", "Quantity", "Size" },
-                values: new object[] { 1, 1, 1, 1, "M" });
+                columns: new[] { "Id", "ColorId1", "OrderId", "ProductId", "Quantity", "SizeId" },
+                values: new object[] { 1, null, 1, 1, 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "OrderLineItem",
-                columns: new[] { "Id", "OrderId", "ProductId", "Quantity", "Size" },
-                values: new object[] { 2, 1, 1, 3, "XL" });
+                columns: new[] { "Id", "ColorId1", "OrderId", "ProductId", "Quantity", "SizeId" },
+                values: new object[] { 2, null, 1, 1, 3, 1 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderLineItem_ColorId1",
+                table: "OrderLineItem",
+                column: "ColorId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderLineItem_OrderId",
@@ -138,24 +156,29 @@ namespace WebShop.Migrations
                 name: "IX_OrderLineItem_ProductId",
                 table: "OrderLineItem",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderLineItem_SizeId",
+                table: "OrderLineItem",
+                column: "SizeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Colors");
-
-            migrationBuilder.DropTable(
                 name: "OrderLineItem");
 
             migrationBuilder.DropTable(
-                name: "Sizes");
+                name: "Colors");
 
             migrationBuilder.DropTable(
                 name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Sizes");
         }
     }
 }

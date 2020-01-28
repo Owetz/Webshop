@@ -4,7 +4,7 @@ import AddProductForm from '../AddProductForm/AddProductForm';
 try {
   fetch("https://localhost:5001/Admin")
     .then(res => res.json())
-    .then(res => console.log(res));
+    //.then(res => console.table(res));
 } catch (err) {
   console.log(err);
 }
