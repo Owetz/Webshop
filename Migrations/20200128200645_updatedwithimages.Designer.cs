@@ -9,7 +9,7 @@ using WebShop.Contexts;
 namespace WebShop.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20200128104801_updatedwithimages")]
+    [Migration("20200128200645_updatedwithimages")]
     partial class updatedwithimages
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

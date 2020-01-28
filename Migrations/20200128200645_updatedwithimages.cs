@@ -2,7 +2,7 @@
 
 namespace WebShop.Migrations
 {
-    public partial class init : Migration
+    public partial class updatedwithimages : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -120,12 +120,12 @@ namespace WebShop.Migrations
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "ArticleName", "Description", "Image", "Price" },
-                values: new object[] { 1, "Square", "This is a Cirle, a beautiful circle at that.", null, "25" });
+                values: new object[] { 1, "Pig", "Origami pig, beautiful - right?", "pig.jpg", "25" });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "ArticleName", "Description", "Image", "Price" },
-                values: new object[] { 2, "Circle", "This is a Cirle, a beautiful circle at that.", null, "30" });
+                values: new object[] { 2, "Birds", "Origami Birds, lovely indeed..", "birds.jpg", "30" });
 
             migrationBuilder.InsertData(
                 table: "Sizes",

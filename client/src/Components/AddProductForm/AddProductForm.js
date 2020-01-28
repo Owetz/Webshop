@@ -17,15 +17,19 @@ const AddProductForm = () => {
                 mode: 'cors',
                 headers:{'Content-Type':'application/json'},
                 body: JSON.stringify(product),
-            }).then(res => console.log(e.target));
+            });
         } catch (error) {
             console.log(error);
         }
     }
 
+    const handleChange = (e) => {
+      setImage(e.target.files[0].name);
+    }
+
     return (
         <>
-        <h2>Add Products:</h2>
+        <h4>Add Products:</h4>
         <form className="" onSubmit={handleSubmit}>
         <label>
           Article Name:
@@ -41,7 +45,7 @@ const AddProductForm = () => {
         </label>
         <label>
             Photo:
-            <input type="file" name="pImage" id="pImage" value={Image} onChange={e => setImage(e.target.value)}/>
+            <input type="file" name="pImage" id="pImage" onChange={handleChange}/>
         </label>
         <div>
           <input type="reset" value="Reset Form" />

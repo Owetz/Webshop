@@ -2,3 +2,10 @@ form {
     display:flex;
     flex-direction: column;
 }
+
+.orderList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vw;
+    margin: 0 auto;
+}

@@ -1,0 +1,13 @@
+section.cartView {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+div.orderItems {
+    width: 50%;
+}
+
+div.orderFormContainer {
+    width: 50%;
+}

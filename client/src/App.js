@@ -5,6 +5,7 @@ import Footer from './Components/Footer/Footer';
 import Admin from './Components/Admin/Admin';
 import Products from './Components/Products/Products';
 import ProductPage from './Components/ProductPage/ProductPage';
+import CartWidget from './Components/CartWidget/CartWidget';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +23,7 @@ const App = () => {
   const [customer, setCustomer] = useState();
   const updateCustomer = (updatedCustomer) => {
     setCustomer(updatedCustomer);
+    localStorage.setItem('localCustomer', JSON.stringify(updatedCustomer));
   }
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const App = () => {
               <h2>Hello!</h2>
             </Route>
             <Route path="/cart">
-              <h2>Din varukorg</h2>
+              <CartWidget />
             </Route>
             <Route path="/admin">
               <Admin />
@@ -61,7 +63,7 @@ const App = () => {
           </Switch>
         </main>
       </Router>
-    <Footer />
+      <Footer />
     </>
   );
 }

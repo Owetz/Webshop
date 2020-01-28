@@ -13,11 +13,10 @@ const ProductPage = (props) => {
     const [Color, setColor] = useState();
     const [Quantity, setQuantity] = useState(1);
 
-
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                await fetch('https://localhost:5001/products/1').then(res => res.json()).then(res => setProduct(res));
+                await fetch('https://localhost:5001'+window.location.pathname).then(res => res.json()).then(res => setProduct(res));
             } catch (e) {
                 console.log(e);
             }
