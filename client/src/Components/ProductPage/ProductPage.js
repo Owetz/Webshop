@@ -6,12 +6,13 @@ import './ProductPage.css';
 
 const ProductPage = (props) => {
     const {customer, updateCustomer} = props;
+    
     const [product, setProduct] = useState({});
     const {id, articleName, image, description, price } = product;
-
     const [Size, setSize] = useState();
     const [Color, setColor] = useState();
     const [Quantity, setQuantity] = useState(1);
+    const [valid, setValid] = useState(false);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -24,20 +25,39 @@ const ProductPage = (props) => {
         fetchProduct();
     }, [])
 
+    useEffect(() => {
+        setValid(checkValidity());
+    },[Color,Size,Quantity]);
+
     const handleColorChange = (e) => {
         setColor(e.target.value);
     }
     const handleSizeChange = (e) => {
         setSize(e.target.value);
-
     }
+    
     const submit = (e) => {
         e.preventDefault();
-        let orderItem = {id:id, quantity:Quantity, color:Color, size:Size, price:price};
         let newcustomer = {...customer};
-        newcustomer.cart.push(orderItem);
+        if(newcustomer.cart.length > 0) {
+            Object.values(newcustomer.cart).forEach((item, index) => {
+                if(item.id === id && item.color === Color && item.size === Size) {
+                    newcustomer.cart[index].quantity = parseInt(newcustomer.cart[index].quantity) + Quantity;
+                } else {
+                    let orderItem = {id:id ,articleName:articleName, quantity:Quantity, color:Color, size:Size, price:price};
+                    newcustomer.cart.push(orderItem);
+                }
+            });
+        } else {
+            let orderItem = {id:id ,articleName:articleName, quantity:Quantity, color:Color, size:Size, price:price};
+            newcustomer.cart.push(orderItem);
+        }
         updateCustomer(newcustomer);
     }
+
+    const checkValidity = () => {
+        return Quantity > 0 ? Color !== undefined ? Size !== undefined ? true: false : false: false;
+    };
 
     return (
         <article className="productView">
@@ -68,12 +88,12 @@ const ProductPage = (props) => {
                     </label>
 
                     <label>
-                        Antal: <input type="number" name="" id="" onChange={(e) => setQuantity(e.target.value)} defaultValue={Quantity} min="1"/>
+                        Antal: <input type="number" name="quantity" id="quantity" onChange={(e) => setQuantity(e.target.value)} defaultValue={Quantity} min="1"/>
                     </label>
                     
                     <p>{price*Quantity} kr</p>
 
-                    <button>Lägg till i varukorg</button>
+                    <button disabled={!valid}>Lägg till i varukorg</button>
                 </form>
 
             </div>

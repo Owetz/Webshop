@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Product from '../Product/Product';
 import './Products.css';
 
-const Products = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        const fetchData = async() => {
-            try {
-                await fetch('https://localhost:5001/products').then(res => res.json()).then(res => setProducts(res));
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        fetchData();
-    },[]);
-
-    useEffect(() => {
-        console.log(products);
-    });
-
+const Products = (props) => {
+    const {products} = props;
+    console.log(products);
+    Object.values(products).forEach(product => console.log(product));
     return (
         <section className="productList">
-            {products.map(product => <Product key={product.id} product={product} />)}
+            {Object.values(products).map(product => <Product key={product.id} product={product} />)}
         </section>
     );
 }

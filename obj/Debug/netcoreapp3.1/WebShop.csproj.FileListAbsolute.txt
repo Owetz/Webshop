@@ -59,10 +59,17 @@
 /Users/danielahl/Desktop/WebShop/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\appsettings.json
+<<<<<<< Updated upstream
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\package.json
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\package-lock.json
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\public\manifest.json
+=======
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\public\manifest.json
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\package-lock.json
+C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\client\package.json
+>>>>>>> Stashed changes
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\WebShop.exe
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\WebShop.deps.json
 C:\Users\Daniel\Desktop\Webshop\bin\Debug\netcoreapp3.1\WebShop.runtimeconfig.json
