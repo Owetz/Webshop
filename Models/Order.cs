@@ -5,6 +5,6 @@ namespace WebShop.Models {
         public int Id {get;set;}
         public string Customer {get;set;}
         public List<OrderLineItem> OrderLineItems {get;set;}
-        public int TotalCost {get;set;}
+        public double TotalCost {get;set;}
     }
 }
