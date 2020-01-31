@@ -29,7 +29,7 @@ namespace WebShop.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("order")]
         //public IActionResult Post([FromBody] Product newProduct) {
         public IActionResult Post([FromBody] Order newOrder){
             using(ShopContext context = new ShopContext()) {
@@ -38,7 +38,7 @@ namespace WebShop.Controllers
             }
             return Created("/admin", newOrder);
         }
-        [HttpPost("{id}")]
+        [HttpPost("oli")]
         public IActionResult Post([FromBody] OrderLineItem newOLI){
             using(ShopContext context = new ShopContext()) {
                 context.OrderLineItems.Add(newOLI);

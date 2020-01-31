@@ -16,17 +16,21 @@ namespace WebShop.Contexts {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Size>().HasData(new Size{
                 Id = 1,
-                SizeName = "XL",
+                SizeName = "Stor",
+            });
+            modelBuilder.Entity<Size>().HasData(new Size{
+                Id = 2,
+                SizeName = "Liten",
             });
 
             modelBuilder.Entity<Color>().HasData(new Color {
                 Id = 1,
-                ColorName = "Red",
+                ColorName = "Röd",
             });
 
             modelBuilder.Entity<Color>().HasData(new Color {
                 Id = 2,
-                ColorName = "Blue",
+                ColorName = "Blå",
             });
 
             modelBuilder.Entity<Product>().HasData(new Product{

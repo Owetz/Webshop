@@ -9,8 +9,8 @@ using WebShop.Contexts;
 namespace WebShop.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20200131140744_Added OLI into context again")]
-    partial class AddedOLIintocontextagain
+    [Migration("20200131200744_Test1")]
+    partial class Test1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -194,7 +194,7 @@ namespace WebShop.Migrations
                         .WithMany()
                         .HasForeignKey("ColorId1");
 
-                    b.HasOne("WebShop.Models.Order", null)
+                    b.HasOne("WebShop.Models.Order", "Order")
                         .WithMany("OrderLineItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)

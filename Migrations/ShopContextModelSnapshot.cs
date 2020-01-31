@@ -33,12 +33,12 @@ namespace WebShop.Migrations
                         new
                         {
                             Id = 1,
-                            ColorName = "Red"
+                            ColorName = "Röd"
                         },
                         new
                         {
                             Id = 2,
-                            ColorName = "Blue"
+                            ColorName = "Blå"
                         });
                 });
 
@@ -182,7 +182,12 @@ namespace WebShop.Migrations
                         new
                         {
                             Id = 1,
-                            SizeName = "XL"
+                            SizeName = "Stor"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            SizeName = "Liten"
                         });
                 });
 
@@ -192,7 +197,7 @@ namespace WebShop.Migrations
                         .WithMany()
                         .HasForeignKey("ColorId1");
 
-                    b.HasOne("WebShop.Models.Order", null)
+                    b.HasOne("WebShop.Models.Order", "Order")
                         .WithMany("OrderLineItems")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)

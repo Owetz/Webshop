@@ -11,7 +11,7 @@ const OrderItem = (props) => {
     return (
         <article className="OrderItem">
             {orderItem && products ? <img src={require('../../images/products/pig.jpg')} alt="" width="100" />:null}
-            <p>Produktnamn: {articleName}</p>
+            <p>Produktnamn: <span>{articleName}</span></p>
             <p>Storlek: {size}</p>
             <p>Färg: {color}</p>
             <p>Antal: {quantity}</p>
