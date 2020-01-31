@@ -9,8 +9,8 @@ using WebShop.Contexts;
 namespace WebShop.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20200128200645_updatedwithimages")]
-    partial class updatedwithimages
+    [Migration("20200131102651_Added OLI into context")]
+    partial class AddedOLIintocontext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,9 @@ namespace WebShop.Migrations
                     b.Property<string>("Customer")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("TotalCost")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
@@ -61,7 +64,8 @@ namespace WebShop.Migrations
                         new
                         {
                             Id = 1,
-                            Customer = "Daniel"
+                            Customer = "Daniel",
+                            TotalCost = 0
                         });
                 });
 
@@ -96,7 +100,7 @@ namespace WebShop.Migrations
 
                     b.HasIndex("SizeId");
 
-                    b.ToTable("OrderLineItem");
+                    b.ToTable("OrderLineItems");
 
                     b.HasData(
                         new

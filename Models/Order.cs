@@ -5,11 +5,6 @@ namespace WebShop.Models {
         public int Id {get;set;}
         public string Customer {get;set;}
         public List<OrderLineItem> OrderLineItems {get;set;}
-        public int TotalCost => getTotal();
-
-        static int getTotal() {
-            int total = 23;
-            return total;
-        }
+        public int TotalCost {get;set;}
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,24 @@ namespace WebShop.Controllers
             {
                 return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).ToList();
             }
+        }
+
+        [HttpPost]
+        //public IActionResult Post([FromBody] Product newProduct) {
+        public IActionResult Post([FromBody] Order newOrder){
+            using(ShopContext context = new ShopContext()) {
+                context.Orders.Add(newOrder);
+                context.SaveChanges();
+            }
+            return Created("/admin", newOrder);
+        }
+        [HttpPost("{id}")]
+        public IActionResult Post([FromBody] OrderLineItem newOLI){
+            using(ShopContext context = new ShopContext()) {
+                context.OrderLineItems.Add(newOLI);
+                context.SaveChanges();
+            }
+            return Created("/admin", newOLI);
         }
     }
 }
