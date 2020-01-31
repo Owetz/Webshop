@@ -51,8 +51,8 @@ namespace WebShop.Migrations
                     b.Property<string>("Customer")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TotalCost")
-                        .HasColumnType("INTEGER");
+                    b.Property<double>("TotalCost")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
@@ -63,7 +63,7 @@ namespace WebShop.Migrations
                         {
                             Id = 1,
                             Customer = "Daniel",
-                            TotalCost = 0
+                            TotalCost = 115.0
                         });
                 });
 
@@ -79,8 +79,8 @@ namespace WebShop.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("INTEGER");
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("INTEGER");
@@ -108,7 +108,7 @@ namespace WebShop.Migrations
                         {
                             Id = 1,
                             OrderId = 1,
-                            Price = 0,
+                            Price = 25.0,
                             ProductId = 1,
                             Quantity = 1,
                             SizeId = 1
@@ -117,7 +117,7 @@ namespace WebShop.Migrations
                         {
                             Id = 2,
                             OrderId = 1,
-                            Price = 0,
+                            Price = 30.0,
                             ProductId = 1,
                             Quantity = 3,
                             SizeId = 1
@@ -139,8 +139,8 @@ namespace WebShop.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Price")
-                        .HasColumnType("TEXT");
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
 
                     b.HasKey("Id");
 
@@ -153,7 +153,7 @@ namespace WebShop.Migrations
                             ArticleName = "Pig",
                             Description = "Origami pig, beautiful - right?",
                             Image = "pig.jpg",
-                            Price = "25"
+                            Price = 25.0
                         },
                         new
                         {
@@ -161,7 +161,7 @@ namespace WebShop.Migrations
                             ArticleName = "Birds",
                             Description = "Origami Birds, lovely indeed..",
                             Image = "birds.jpg",
-                            Price = "30"
+                            Price = 30.0
                         });
                 });
 

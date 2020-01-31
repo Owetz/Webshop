@@ -2,7 +2,7 @@
 
 namespace WebShop.Migrations
 {
-    public partial class AddedOLIintocontext : Migration
+    public partial class AddedOLIintocontextagain : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,7 @@ namespace WebShop.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Customer = table.Column<string>(nullable: true),
-                    TotalCost = table.Column<int>(nullable: false)
+                    TotalCost = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,7 +41,7 @@ namespace WebShop.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ArticleName = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Price = table.Column<string>(nullable: true),
+                    Price = table.Column<double>(nullable: false),
                     Image = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -72,7 +72,8 @@ namespace WebShop.Migrations
                     ProductId = table.Column<int>(nullable: false),
                     ColorId1 = table.Column<int>(nullable: true),
                     SizeId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false)
+                    Quantity = table.Column<int>(nullable: false),
+                    Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -116,17 +117,17 @@ namespace WebShop.Migrations
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "Id", "Customer", "TotalCost" },
-                values: new object[] { 1, "Daniel", 0 });
+                values: new object[] { 1, "Daniel", 115.0 });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "ArticleName", "Description", "Image", "Price" },
-                values: new object[] { 1, "Pig", "Origami pig, beautiful - right?", "pig.jpg", "25" });
+                values: new object[] { 1, "Pig", "Origami pig, beautiful - right?", "pig.jpg", 25.0 });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "ArticleName", "Description", "Image", "Price" },
-                values: new object[] { 2, "Birds", "Origami Birds, lovely indeed..", "birds.jpg", "30" });
+                values: new object[] { 2, "Birds", "Origami Birds, lovely indeed..", "birds.jpg", 30.0 });
 
             migrationBuilder.InsertData(
                 table: "Sizes",
@@ -135,13 +136,13 @@ namespace WebShop.Migrations
 
             migrationBuilder.InsertData(
                 table: "OrderLineItems",
-                columns: new[] { "Id", "ColorId1", "OrderId", "ProductId", "Quantity", "SizeId" },
-                values: new object[] { 1, null, 1, 1, 1, 1 });
+                columns: new[] { "Id", "ColorId1", "OrderId", "Price", "ProductId", "Quantity", "SizeId" },
+                values: new object[] { 1, null, 1, 25.0, 1, 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "OrderLineItems",
-                columns: new[] { "Id", "ColorId1", "OrderId", "ProductId", "Quantity", "SizeId" },
-                values: new object[] { 2, null, 1, 1, 3, 1 });
+                columns: new[] { "Id", "ColorId1", "OrderId", "Price", "ProductId", "Quantity", "SizeId" },
+                values: new object[] { 2, null, 1, 30.0, 1, 3, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderLineItems_ColorId1",

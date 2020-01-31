@@ -32,7 +32,7 @@ namespace WebShop.Contexts {
             modelBuilder.Entity<Product>().HasData(new Product{
                 Id = 1,
                 ArticleName = "Pig",
-                Price = "25",
+                Price = 25.00,
                 Description = "Origami pig, beautiful - right?",
                 Image = "pig.jpg"
             });
@@ -40,7 +40,7 @@ namespace WebShop.Contexts {
             modelBuilder.Entity<Product>().HasData(new Product{
                 Id = 2,
                 ArticleName = "Birds",
-                Price = "30",
+                Price = 30.00,
                 Description = "Origami Birds, lovely indeed..",
                 Image = "birds.jpg"
             });
@@ -48,6 +48,7 @@ namespace WebShop.Contexts {
             modelBuilder.Entity<Order>().HasData(new Order{
                 Id = 1,
                 Customer = "Daniel",
+                TotalCost = 115.00
             });
 
             modelBuilder.Entity<OrderLineItem>().HasData(new OrderLineItem{
@@ -57,6 +58,7 @@ namespace WebShop.Contexts {
                 Quantity = 1,
                 ColorId = 2,
                 SizeId = 1,
+                Price = 25.00
             });
 
             modelBuilder.Entity<OrderLineItem>().HasData(new OrderLineItem{
@@ -66,6 +68,7 @@ namespace WebShop.Contexts {
                 Quantity = 3,
                 ColorId = 1,
                 SizeId = 1,
+                Price = 30.00
             });
             
         }
