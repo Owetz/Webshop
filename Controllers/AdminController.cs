@@ -28,6 +28,14 @@ namespace WebShop.Controllers
                 return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).ToList();
             }
         }
+        [HttpGet("{id}")]
+        public Order Get(int id){
+            using(ShopContext context = new ShopContext())
+            {
+                //return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).Find(id);
+                    return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).SingleOrDefault(x => x.Id == id);
+            }
+        }
 
         [HttpPost("order")]
         //public IActionResult Post([FromBody] Product newProduct) {
