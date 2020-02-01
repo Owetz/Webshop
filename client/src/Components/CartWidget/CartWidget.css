@@ -4,10 +4,30 @@ section.cartView {
 
 }
 
+section.cartView div {
+    margin: 0 1rem
+}
+
 div.orderItems {
     width: 50%;
 }
 
 div.orderFormContainer {
     width: 50%;
+}
+
+div.orderFormContainer form {
+    display: flex;
+    justify-content: space-between;
+}
+.orderFormContainer form input[type="text"], .orderFormContainer form input[type="email"] {
+    margin: .5rem 0;
+    width:20rem;
+    padding: .5rem;
+}
+
+.orderFormContainer form input[type="submit"] {
+    width:10rem;
+    height:2rem;
+    border-radius:.5rem;
 }

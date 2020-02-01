@@ -15,7 +15,7 @@ const OrderItem = (props) => {
             <p>Storlek: {size}</p>
             <p>Färg: {color}</p>
             <p>Antal: {quantity}</p>
-            <p>Totalkostnad: {price * quantity} kr</p>
+            <p>Pris: {price * quantity} kr</p>
         </article>
     )
 }
