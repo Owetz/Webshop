@@ -65,6 +65,8 @@ const ProductPage = (props) => {
    
 
     return (
+        <>
+        <a href="/">Gå tillbaks till produktlistan..</a>
         <article className="productView">
             {image ?
                 <img className="productImage" src={require('../../images/products/' + image)} alt={description} /> :
@@ -104,6 +106,7 @@ const ProductPage = (props) => {
 
             </div>
         </article>
+        </>
     );
 }
 

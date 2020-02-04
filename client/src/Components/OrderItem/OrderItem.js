@@ -7,12 +7,16 @@ const OrderItem = (props) => {
     
     return (
         <article className="OrderItem">
-            {orderItem.articleImage && products ? <img src={require('../../images/products/'+articleImage)} alt="" width="100" />:null}
-            <p>Produktnamn: <span>{articleName}</span></p>
-            <p>Storlek: {Size}</p>
-            <p>Färg: {Color}</p>
-            <p>Antal: {Quantity}</p>
-            <p>Pris: {Price * Quantity} kr</p>
+            <div className="orderImage">
+                {orderItem.articleImage && products ? <img src={require('../../images/products/'+articleImage)} alt="" width="100" />:null}
+            </div>
+            <div className="orderDetails">
+                <p>Produktnamn: <span>{articleName}</span></p>
+                <p>Storlek: {Size}</p>
+                <p>Färg: {Color}</p>
+                <p>Antal: {Quantity}</p>
+                <p>Pris: {Price * Quantity}kr</p>
+            </div>
         </article>
     )
 }

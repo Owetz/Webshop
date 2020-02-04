@@ -36,53 +36,34 @@ namespace WebShop.Contexts {
 
             modelBuilder.Entity<Product>().HasData(new Product{
                 Id = 1,
-                ArticleName = "Pig",
+                ArticleName = "Gris",
                 Price = 25.00,
-                Description = "Origami pig, beautiful - right?",
+                Description = "Origamigris, väldigt vikt i många riktningar.",
                 Image = "pig.jpg"
             });
 
             modelBuilder.Entity<Product>().HasData(new Product{
                 Id = 2,
-                ArticleName = "Birds",
+                ArticleName = "Fåglar",
                 Price = 30.00,
-                Description = "Origami Birds, lovely indeed..",
+                Description = "Fina pappersfåglar. Gör sig bäst vid middagar.",
                 Image = "birds.jpg"
             });
 
-            modelBuilder.Entity<Customer>().HasData(new Customer{
-                Id = 1,
-                Name = "Daniel Ahl",
-                Email = "danielahl89@gmail.com",
-                Address = "Nv 24", 
-                ZipCode = "19545",
-                City = "Märsta"
+            modelBuilder.Entity<Product>().HasData(new Product{
+                Id = 3,
+                ArticleName = "Elefanter",
+                Price = 50.00,
+                Description = "Elefanter är fina djur.",
+                Image = "elephants.jpg"
             });
 
-            modelBuilder.Entity<Order>().HasData(new Order{
-                Id = 1,
-                CustomerId= 1,
-                TotalCost = 115.00
-            });
-
-            modelBuilder.Entity<OrderLineItem>().HasData(new OrderLineItem{
-                Id = 1,
-                OrderId = 1,
-                ProductId = 1,
-                Quantity = 1,
-                Color = "Rosa",
-                Size = "Stor",
-                Price = 25.00
-            });
-
-            modelBuilder.Entity<OrderLineItem>().HasData(new OrderLineItem{
-                Id = 2,
-                OrderId = 1,
-                ProductId = 1,
-                Quantity = 3,
-                Color = "Blå",
-                Size = "Liten",
-                Price = 30.00
+            modelBuilder.Entity<Product>().HasData(new Product{
+                Id = 4,
+                ArticleName = "Svanar",
+                Price = 50.00,
+                Description = "Svanar är fåglar, fast på vatten.",
+                Image = "swans.jpg"
             });
             
         }

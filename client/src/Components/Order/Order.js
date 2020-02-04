@@ -1,16 +1,20 @@
 import React, {useState} from 'react';
 import './Order.css';
-import { Link } from "react-router-dom";
+import OrderItem from '../OrderItem/OrderItem';
 
 const Order = (props) => {
-    const {customer, id, totalCost} = props.order;
+    const {customer, id, totalCost, orderLineItems} = props.order;
     return (
         <article className="orderCard">
-            <Link to={'/admin/' + id}>
                 <p>Ordernummer: {id}</p>
-                <p>Kund: {customer}</p>
+                <p>Kund: {customer.name}</p>
+                {
+                    orderLineItems.map(item => <OrderItem 
+                            key={`${item.articleName} ${item.color} ${item.size}`} 
+                            orderItem={item} 
+                            />)
+                }
                 <p>Totalkostnad: {totalCost} kr</p>
-            </Link>
         </article>
     )
 }

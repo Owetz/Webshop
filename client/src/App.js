@@ -27,12 +27,12 @@ const App = () => {
 
     if (customer) {
       console.log("Customer exists");
-      setCustomer(customer);
+      updateCustomer(customer);
     } else {
       console.log("Customer does not exist");
       let customer = { Name: "", Email: "", cart: [], isLoggedIn: false };
       localStorage.setItem("localCustomer", JSON.stringify(customer));
-      setCustomer(customer);
+      updateCustomer(customer);
     }
   }, []);
 
@@ -87,7 +87,7 @@ const App = () => {
               <h2>Hello!</h2>
             </Route>
             <Route path="/cart">
-              <CartWidget Sizes={sizes} Colors={colors} customer={customer} setCustomer={setCustomer} products={products}/>
+              <CartWidget customer={customer} updateCustomer={updateCustomer} products={products}/>
             </Route>
             <Route path="/admin">
               <Admin />

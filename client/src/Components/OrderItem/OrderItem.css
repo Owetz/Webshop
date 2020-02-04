@@ -2,10 +2,16 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-evenly;
     margin: 1rem 0;
 }
 
 article.OrderItem p {
     width: 2rem;
+    font-size: .7rem;
+}
+
+article .orderDetails {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
 }

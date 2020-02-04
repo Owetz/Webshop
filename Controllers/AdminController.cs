@@ -25,7 +25,11 @@ namespace WebShop.Controllers
         {
             using (ShopContext context = new ShopContext())
             {
-                return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).ToList();
+                List<Order> orders = context.Orders.Include(o => o.OrderLineItems).Include(o => o.Customer).ToList();
+                foreach (var order in orders) {
+                    Console.WriteLine(order);
+                }
+                return orders;
             }
         }
         [HttpGet("{id}")]
@@ -38,21 +42,12 @@ namespace WebShop.Controllers
 
         [HttpPost("order")]
         public IActionResult Post([FromBody] Order newOrder){
-            Console.WriteLine(newOrder);
+            
             using(ShopContext context = new ShopContext()) {
                 context.Orders.Add(newOrder);
                 context.SaveChanges();
             }
-            return Created("/admin", newOrder);
-        }
-
-        [HttpPost("oli")]
-        public IActionResult Post([FromBody] OrderLineItem newOLI){
-            using(ShopContext context = new ShopContext()) {
-                context.OrderLineItems.Add(newOLI);
-                context.SaveChanges();
-            }
-            return Created("/admin", newOLI);
+            return Created("/admin/orders", newOrder);
         }
     }
 }

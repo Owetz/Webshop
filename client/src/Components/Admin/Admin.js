@@ -6,6 +6,10 @@ import Order from '../Order/Order';
 const Admin = () => {
 
   const [orders, setOrders] = useState([]);
+  
+  useEffect(() => {
+    console.log(orders);
+  },[orders]);
 
   useEffect(() => {
     const getOrders = async() => {
@@ -20,9 +24,7 @@ const Admin = () => {
     getOrders();
   },[]);
 
-  useEffect(() => {
-    console.log(orders);
-  },[orders]);
+  
 
   return (
     <>
@@ -31,10 +33,6 @@ const Admin = () => {
       <section className="orderList">
         {orders.map(order => <Order key={order.id} order={order} />)}
       </section>
-
-
-      <br/>
-      <AddProductForm />
     </>
   );
 };
