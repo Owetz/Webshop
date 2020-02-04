@@ -2,7 +2,7 @@
 
 namespace WebShop.Migrations
 {
-    public partial class Test : Migration
+    public partial class Testar1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,17 +20,20 @@ namespace WebShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "Customers",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Customer = table.Column<string>(nullable: true),
-                    TotalCost = table.Column<double>(nullable: false)
+                    Name = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    ZipCode = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.PrimaryKey("PK_Customers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -63,6 +66,26 @@ namespace WebShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    CustomerId = table.Column<int>(nullable: false),
+                    TotalCost = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderLineItems",
                 columns: table => new
                 {
@@ -70,20 +93,14 @@ namespace WebShop.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     OrderId = table.Column<int>(nullable: false),
                     ProductId = table.Column<int>(nullable: false),
-                    ColorId1 = table.Column<int>(nullable: true),
-                    SizeId = table.Column<int>(nullable: false),
+                    Color = table.Column<string>(nullable: true),
+                    Size = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
                     Price = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderLineItems", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_OrderLineItems_Colors_ColorId1",
-                        column: x => x.ColorId1,
-                        principalTable: "Colors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_OrderLineItems_Orders_OrderId",
                         column: x => x.OrderId,
@@ -96,28 +113,22 @@ namespace WebShop.Migrations
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_OrderLineItems_Sizes_SizeId",
-                        column: x => x.SizeId,
-                        principalTable: "Sizes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Colors",
                 columns: new[] { "Id", "ColorName" },
-                values: new object[] { 1, "Red" });
+                values: new object[] { 1, "Röd" });
 
             migrationBuilder.InsertData(
                 table: "Colors",
                 columns: new[] { "Id", "ColorName" },
-                values: new object[] { 2, "Blue" });
+                values: new object[] { 2, "Blå" });
 
             migrationBuilder.InsertData(
-                table: "Orders",
-                columns: new[] { "Id", "Customer", "TotalCost" },
-                values: new object[] { 1, "Daniel", 115.0 });
+                table: "Customers",
+                columns: new[] { "Id", "Address", "City", "Email", "Name", "ZipCode" },
+                values: new object[] { 1, "Nv 24", "Märsta", "danielahl89@gmail.com", "Daniel Ahl", "19545" });
 
             migrationBuilder.InsertData(
                 table: "Products",
@@ -132,22 +143,27 @@ namespace WebShop.Migrations
             migrationBuilder.InsertData(
                 table: "Sizes",
                 columns: new[] { "Id", "SizeName" },
-                values: new object[] { 1, "XL" });
+                values: new object[] { 1, "Stor" });
+
+            migrationBuilder.InsertData(
+                table: "Sizes",
+                columns: new[] { "Id", "SizeName" },
+                values: new object[] { 2, "Liten" });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "Id", "CustomerId", "TotalCost" },
+                values: new object[] { 1, 1, 115.0 });
 
             migrationBuilder.InsertData(
                 table: "OrderLineItems",
-                columns: new[] { "Id", "ColorId1", "OrderId", "Price", "ProductId", "Quantity", "SizeId" },
-                values: new object[] { 1, null, 1, 25.0, 1, 1, 1 });
+                columns: new[] { "Id", "Color", "OrderId", "Price", "ProductId", "Quantity", "Size" },
+                values: new object[] { 1, "Rosa", 1, 25.0, 1, 1, "Stor" });
 
             migrationBuilder.InsertData(
                 table: "OrderLineItems",
-                columns: new[] { "Id", "ColorId1", "OrderId", "Price", "ProductId", "Quantity", "SizeId" },
-                values: new object[] { 2, null, 1, 30.0, 1, 3, 1 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderLineItems_ColorId1",
-                table: "OrderLineItems",
-                column: "ColorId1");
+                columns: new[] { "Id", "Color", "OrderId", "Price", "ProductId", "Quantity", "Size" },
+                values: new object[] { 2, "Blå", 1, 30.0, 1, 3, "Liten" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderLineItems_OrderId",
@@ -160,18 +176,21 @@ namespace WebShop.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderLineItems_SizeId",
-                table: "OrderLineItems",
-                column: "SizeId");
+                name: "IX_Orders_CustomerId",
+                table: "Orders",
+                column: "CustomerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Colors");
+
+            migrationBuilder.DropTable(
                 name: "OrderLineItems");
 
             migrationBuilder.DropTable(
-                name: "Colors");
+                name: "Sizes");
 
             migrationBuilder.DropTable(
                 name: "Orders");
@@ -180,7 +199,7 @@ namespace WebShop.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Sizes");
+                name: "Customers");
         }
     }
 }

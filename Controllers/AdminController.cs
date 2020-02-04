@@ -32,20 +32,20 @@ namespace WebShop.Controllers
         public Order Get(int id){
             using(ShopContext context = new ShopContext())
             {
-                //return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).Find(id);
-                    return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).SingleOrDefault(x => x.Id == id);
+                return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).SingleOrDefault(x => x.Id == id);
             }
         }
 
         [HttpPost("order")]
-        //public IActionResult Post([FromBody] Product newProduct) {
         public IActionResult Post([FromBody] Order newOrder){
+            Console.WriteLine(newOrder);
             using(ShopContext context = new ShopContext()) {
                 context.Orders.Add(newOrder);
                 context.SaveChanges();
             }
             return Created("/admin", newOrder);
         }
+
         [HttpPost("oli")]
         public IActionResult Post([FromBody] OrderLineItem newOLI){
             using(ShopContext context = new ShopContext()) {

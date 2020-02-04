@@ -9,6 +9,7 @@ namespace WebShop.Contexts {
         public DbSet<OrderLineItem> OrderLineItems{get;set;}
         public DbSet<Size> Sizes {get;set;}
         public DbSet<Color> Colors {get;set;}
+        public DbSet<Customer> Customers {get;set;}
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite("Data Source = webshop.db");
@@ -49,9 +50,18 @@ namespace WebShop.Contexts {
                 Image = "birds.jpg"
             });
 
+            modelBuilder.Entity<Customer>().HasData(new Customer{
+                Id = 1,
+                Name = "Daniel Ahl",
+                Email = "danielahl89@gmail.com",
+                Address = "Nv 24", 
+                ZipCode = "19545",
+                City = "Märsta"
+            });
+
             modelBuilder.Entity<Order>().HasData(new Order{
                 Id = 1,
-                Customer = "Daniel",
+                CustomerId= 1,
                 TotalCost = 115.00
             });
 
@@ -60,8 +70,8 @@ namespace WebShop.Contexts {
                 OrderId = 1,
                 ProductId = 1,
                 Quantity = 1,
-                ColorId = 2,
-                SizeId = 1,
+                Color = "Rosa",
+                Size = "Stor",
                 Price = 25.00
             });
 
@@ -70,8 +80,8 @@ namespace WebShop.Contexts {
                 OrderId = 1,
                 ProductId = 1,
                 Quantity = 3,
-                ColorId = 1,
-                SizeId = 1,
+                Color = "Blå",
+                Size = "Liten",
                 Price = 30.00
             });
             

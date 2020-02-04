@@ -30,8 +30,7 @@ public class Startup
         options.AddPolicy(MyAllowSpecificOrigins,
         builder =>
         {
-            builder.WithOrigins("http://localhost:3000",
-                                "https://localhost:3000")
+            builder.AllowAnyOrigin()
                                 .AllowAnyHeader()
                                 .AllowAnyMethod();
         });

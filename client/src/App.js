@@ -14,6 +14,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const App = () => {
   const [customer, setCustomer] = useState();
   const [products, setProducts] = useState();
+  const [sizes, setSizes] = useState();
+  const [colors, setColors] = useState();
 
   const updateCustomer = updatedCustomer => {
     setCustomer(updatedCustomer);
@@ -54,6 +56,27 @@ const App = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchSizes = async () => {
+      try {
+        await fetch('https://localhost:5001/sizes').then(res => res.json()).then(res => setSizes(res))
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    const fetchColors = async () => {
+      try {
+        await fetch('https://localhost:5001/colors').then(res => res.json()).then(res => setColors(res))
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    
+    fetchColors();
+    fetchSizes();
+  }, [])
+
   return (
     <>
       <Router>
@@ -64,13 +87,15 @@ const App = () => {
               <h2>Hello!</h2>
             </Route>
             <Route path="/cart">
-              <CartWidget customer={customer} setCustomer={setCustomer} products={products}/>
+              <CartWidget Sizes={sizes} Colors={colors} customer={customer} setCustomer={setCustomer} products={products}/>
             </Route>
             <Route path="/admin">
               <Admin />
             </Route>
             <Route path="/products/">
               <ProductPage
+                Sizes={sizes}
+                Colors={colors}
                 customer={customer}
                 updateCustomer={updateCustomer}
               />

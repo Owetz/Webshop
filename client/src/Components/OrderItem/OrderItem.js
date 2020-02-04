@@ -3,19 +3,16 @@ import './OrderItem.css';
 
 const OrderItem = (props) => {
     const {orderItem, products} = props;
-    const {articleName, quantity, size, color, price} = orderItem;
-    console.log(articleName);
-    console.log(orderItem);
-    console.log(products);
+    const {articleImage, articleName, Quantity, Size, Color, Price} = orderItem;
     
     return (
         <article className="OrderItem">
-            {orderItem && products ? <img src={require('../../images/products/pig.jpg')} alt="" width="100" />:null}
+            {orderItem.articleImage && products ? <img src={require('../../images/products/'+articleImage)} alt="" width="100" />:null}
             <p>Produktnamn: <span>{articleName}</span></p>
-            <p>Storlek: {size}</p>
-            <p>Färg: {color}</p>
-            <p>Antal: {quantity}</p>
-            <p>Pris: {price * quantity} kr</p>
+            <p>Storlek: {Size}</p>
+            <p>Färg: {Color}</p>
+            <p>Antal: {Quantity}</p>
+            <p>Pris: {Price * Quantity} kr</p>
         </article>
     )
 }
