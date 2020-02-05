@@ -45,7 +45,8 @@ const CartWidget = (props) => {
                     updatedCustomer.cart = [];
                     updateCustomer(updatedCustomer);
                     localStorage.setItem('localCustomer', JSON.stringify(updatedCustomer));
-                    
+                    alert('Ordern skapades korrekt!')
+                    console.log(res);
                 }
             });
         } catch (e) {

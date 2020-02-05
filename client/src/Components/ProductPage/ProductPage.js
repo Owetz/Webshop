@@ -45,7 +45,7 @@ const ProductPage = (props) => {
         if(newcustomer.cart.length > 0) {
             Object.values(newcustomer.cart).forEach((item, index) => {
                 if(item.ProductId === id && item.Color === Color && item.Size === Size) {
-                    newcustomer.cart[index].Quantity = parseInt(newcustomer.cart[index].Quantity) + Quantity;
+                    newcustomer.cart[index].Quantity = newcustomer.cart[index].Quantity + Quantity;
                 } else {
                     let orderItem = {articleName:articleName, articleImage:image, ProductId:id, Quantity:Quantity, Color:Color, Size:Size, Price:price};
                     newcustomer.cart.push(orderItem);
@@ -96,7 +96,7 @@ const ProductPage = (props) => {
                     </label>
 
                     <label>
-                        Antal: <input type="number" name="quantity" id="quantity" onChange={(e) => setQuantity(e.target.value)} defaultValue={Quantity} min="1"/>
+                        Antal: <input type="number" name="quantity" id="quantity" onChange={(e) => setQuantity(parseInt(e.target.value))} defaultValue={Quantity} min="1"/>
                     </label>
                     
                     <p>{price*Quantity} kr</p>

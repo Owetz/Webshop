@@ -7,7 +7,6 @@ namespace WebShop.Models {
         [JsonIgnore]
         public Order Order {get;set;}
         public int ProductId {get;set;}
-        [JsonIgnore]
         public Product Product {get;set;}
         public string Color {get;set;}
         public string Size {get;set;}

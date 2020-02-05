@@ -8,12 +8,11 @@ const Order = (props) => {
         <article className="orderCard">
                 <p>Ordernummer: {id}</p>
                 <p>Kund: {customer.name}</p>
-                {
-                    orderLineItems.map(item => <OrderItem 
-                            key={`${item.articleName} ${item.color} ${item.size}`} 
-                            orderItem={item} 
-                            />)
-                }
+                <p>Epost: {customer.email}</p>
+                <p>Adress: {`${customer.address}, ${customer.zipCode}, ${customer.city}`}</p>
+                {orderLineItems.map(product => {
+                    return <OrderItem key={`${product.articleName} ${product.color} ${product.size}`} orderItem={product} />
+                })}
                 <p>Totalkostnad: {totalCost} kr</p>
         </article>
     )
