@@ -2,7 +2,7 @@
 
 namespace WebShop.Migrations
 {
-    public partial class Final : Migration
+    public partial class Initialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

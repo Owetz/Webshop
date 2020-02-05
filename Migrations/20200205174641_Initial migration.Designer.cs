@@ -8,8 +8,8 @@ using WebShop.Contexts;
 namespace WebShop.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20200204142345_Final?")]
-    partial class Final
+    [Migration("20200205174641_Initial migration")]
+    partial class Initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
