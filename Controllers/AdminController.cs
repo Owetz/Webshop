@@ -32,7 +32,7 @@ namespace WebShop.Controllers
         public Order Get(int id){
             using(ShopContext context = new ShopContext())
             {
-                return context.Orders.Include(o => o.OrderLineItems).ThenInclude(o => o.Product).SingleOrDefault(x => x.Id == id);
+                return context.Orders.SingleOrDefault(x => x.Id == id);
             }
         }
 
@@ -42,8 +42,8 @@ namespace WebShop.Controllers
             using(ShopContext context = new ShopContext()) {
                 context.Orders.Add(newOrder);
                 context.SaveChanges();
-                return Created("/admin/orders", newOrder);
             }
+            return Created("/admin", newOrder);
         }
     }
 }

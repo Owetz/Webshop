@@ -2,7 +2,7 @@ import React from 'react';
 import './OrderItem.css';
 
 const OrderItem = (props) => {
-    const {orderItem, products} = props;
+    const {orderItem, products, } = props;
     const {articleImage, articleName, Quantity, Size, Color, Price} = orderItem;
     console.log('orderitem:');
     console.log(orderItem);
