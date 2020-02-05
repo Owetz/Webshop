@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProductPage.css';
 import { noAuto } from '@fortawesome/fontawesome-svg-core';
-
+import { Link } from "react-router-dom";
 
 
 
@@ -66,7 +66,7 @@ const ProductPage = (props) => {
 
     return (
         <>
-        <a href="/">Gå tillbaks till produktlistan..</a>
+        <Link to="/">Gå tillbaks till produktlistan..</Link>
         <article className="productView">
             {image ?
                 <img className="productImage" src={require('../../images/products/' + image)} alt={description} /> :

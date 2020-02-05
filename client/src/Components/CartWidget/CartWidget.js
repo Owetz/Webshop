@@ -74,15 +74,15 @@ const CartWidget = (props) => {
             <div className="orderFormContainer">
                 <form onSubmit={placeOrder}>
                     <label>Fullt namn: </label>
-                    <input type="text" name="cName" id="cName" placeholder="John Doe"/>
+                    <input type="text" name="cName" id="cName" placeholder="John Doe" defaultValue={customer ? customer.Name:null}/>
                     <label>Epostadress: </label>
-                    <input type="email" name="cEmail" id="cEmail" placeholder="exempel@email.se"/>
+                    <input type="email" name="cEmail" id="cEmail" placeholder="exempel@email.se" defaultValue={customer ? customer.Email:null}/>
                     <label>Adress: </label>
-                    <input type="text" name="cAddress" id="cAddress" placeholder="Syltgatan 31" />
+                    <input type="text" name="cAddress" id="cAddress" placeholder="Syltgatan 31" defaultValue={customer ? customer.Address:null}/>
                     <label>Postnummer: </label>
-                    <input type="text" name="cZip" id="cZip" placeholder="12345" />
+                    <input type="text" name="cZip" id="cZip" placeholder="12345" defaultValue={customer ? customer.ZipCode:null}/>
                     <label>Postort: </label>
-                    <input type="text" name="cCity" id="cCity" placeholder="Exempelstad" />
+                    <input type="text" name="cCity" id="cCity" placeholder="Exempelstad" defaultValue={customer ? customer.City:null}/>
                     <input type="submit" value="Lägg ordern!"/>
                 </form>
             </div>
