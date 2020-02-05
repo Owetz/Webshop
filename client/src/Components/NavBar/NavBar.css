@@ -17,8 +17,13 @@ nav a {
     font-size:2rem;
 }
 
+img.logo {
+    width:2rem;
+}
+
 .logo a {
     font-family: Julee;
+    display:flex;
 }
 
 span.cartAmount {

@@ -9,11 +9,10 @@ const NavBar = (props) => {
     return (
         <nav>
             <div className="logo">
-                <Link to="/">Origami Webshop</Link>
+                <Link to="/"><img src={require('../../images/logo.png')} className="logo"/> Origami</Link>
             </div>
             <div className="actions">
-                {/*<Link to="/account">{isLoggedIn ? 'Min Sida':'Logga In'}</Link>*/}
-                <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart}/><span className="cartAmount">({cart?cart.length:0})</span></Link>
+                <Link to="/cart"><FontAwesomeIcon icon={faShoppingCart} color="#232931" /><span className="cartAmount">({cart?cart.length:0})</span></Link>
             </div>
         </nav>
     );
