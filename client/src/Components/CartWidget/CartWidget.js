@@ -20,7 +20,6 @@ const CartWidget = (props) => {
 
     const placeOrder = (e) => {
         e.preventDefault();
-        console.log('Placing order...');
         let updatedCustomer = {...customer};
         updatedCustomer.Name = e.target.cName.value;
         updatedCustomer.Email = e.target.cEmail.value.toLowerCase();
@@ -32,7 +31,6 @@ const CartWidget = (props) => {
         order.customer = {Name:Name, Email:Email, Address:Address, ZipCode:ZipCode, City:City};
         order.orderLineItems = customer ? customer.cart.map(item => {return {ProductId: item.ProductId, Quantity:item.Quantity, Color:item.Color, Size: item.Size, Price:item.Price}}):null;
         order.totalCost = totalCost;
-        console.log(JSON.stringify(order));
         try {
             fetch('https://localhost:5001/Admin/order', {
                 method: 'POST',
@@ -42,15 +40,16 @@ const CartWidget = (props) => {
             }).then(res => {
                 if(res.ok) {
                     setSuccess(true);
-                    updatedCustomer.cart = [];
-                    updateCustomer(updatedCustomer);
-                    localStorage.setItem('localCustomer', JSON.stringify(updatedCustomer));
+                    let successCustomer = {...updatedCustomer};
+                    successCustomer.cart = [];
+                    updateCustomer(successCustomer);
+                    localStorage.setItem('localCustomer', JSON.stringify(successCustomer));
                     
                 }
                 return res;
             }).then(res => res.json()).then(res => {
-                console.log(res);
-                alert(`Din order har ordernummer: ${res.id}`);
+                alert(`Din beställning har skickats!
+                Din order har ordernummer: ${res.id}`);
             });
         } catch (e) {
             console.log(e);
