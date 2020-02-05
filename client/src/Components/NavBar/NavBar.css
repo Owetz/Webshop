@@ -24,10 +24,12 @@ img.logo {
 .logo a {
     font-family: Julee;
     display:flex;
+    color: #232931;
 }
 
 span.cartAmount {
     align-content: center;
     font-size: .8rem;
     font-weight: thin;
+    color: #232931;
 }

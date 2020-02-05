@@ -3,7 +3,7 @@ import './CartWidget.css';
 import OrderItem from '../OrderItem/OrderItem';
 
 const CartWidget = (props) => {
-    const {customer, products, updateCustomer} = props;
+    const {customer, products, updateCustomer, setMessage} = props;
     const [order, setOrder] = useState({});
     const [totalCost, setTotalCost] = useState(0);
     const [success, setSuccess] = useState(false);
@@ -48,7 +48,7 @@ const CartWidget = (props) => {
                 }
                 return res;
             }).then(res => res.json()).then(res => {
-                alert(`Din beställning har skickats!
+                setMessage(`Din beställning har skickats!
                 Din order har ordernummer: ${res.id}`);
             });
         } catch (e) {

@@ -7,6 +7,7 @@ import Products from "./Components/Products/Products";
 import ProductPage from "./Components/ProductPage/ProductPage";
 import CartWidget from "./Components/CartWidget/CartWidget";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Message from './Components/Message/Message';
 
 //Should save something in localstorage to bind this browser to this account.
 //user = {"seed":1231241, "email":"daniel@ahl.se"};
@@ -16,6 +17,7 @@ const App = () => {
   const [products, setProducts] = useState();
   const [sizes, setSizes] = useState();
   const [colors, setColors] = useState();
+  const [message, setMessage] = useState();
 
   const updateCustomer = updatedCustomer => {
     setCustomer(updatedCustomer);
@@ -79,15 +81,18 @@ const App = () => {
 
   return (
     <>
+    {message ? <Message message={message} setMessage={setMessage}/> : null}
       <Router>
+        
         <NavBar cart={customer ? customer.cart : null} />
+        
         <main>
           <Switch>
             <Route path="/account">
               <h2>Hello!</h2>
             </Route>
             <Route path="/cart">
-              <CartWidget customer={customer} updateCustomer={updateCustomer} products={products}/>
+              <CartWidget customer={customer} updateCustomer={updateCustomer} products={products} setMessage={setMessage}/>
             </Route>
             <Route path="/admin">
               <Admin />
@@ -98,6 +103,7 @@ const App = () => {
                 Colors={colors}
                 customer={customer}
                 updateCustomer={updateCustomer}
+                setMessage={setMessage}
               />
             </Route>
             <Route path="/">

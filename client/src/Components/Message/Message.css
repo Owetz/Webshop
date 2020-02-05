@@ -1,0 +1,26 @@
+div.message {
+    display: flex;
+    position:absolute;
+    flex-direction: column;
+    background:#F6D339;
+    border-radius: .5rem;
+    padding:.5rem;
+    min-height:2rem;
+    align-items: center;
+    width: 30vw;
+    margin:1rem 35vw;
+    z-index:1;
+    color: #232931;
+}
+
+div.message p.text {
+    top:-.7rem;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+div.message .close {
+    cursor: pointer;
+    align-self: flex-end;
+}

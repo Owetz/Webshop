@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './ProductPage.css';
-import { noAuto } from '@fortawesome/fontawesome-svg-core';
 import { Link } from "react-router-dom";
 
 
 
 const ProductPage = (props) => {
-    const {customer, updateCustomer, Colors, Sizes} = props;
+    const {customer, updateCustomer, Colors, Sizes, setMessage} = props;
     
     const [product, setProduct] = useState({});
     const {id, articleName, image, description, price } = product;
@@ -56,6 +55,7 @@ const ProductPage = (props) => {
             newcustomer.cart.push(orderItem);
         }
         updateCustomer(newcustomer);
+        setMessage('Produkt tillagd i varukorgen!');
     }
 
     const checkValidity = () => {
