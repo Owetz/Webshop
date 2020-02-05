@@ -10,9 +10,11 @@ const Order = (props) => {
                 <p>Kund: {customer.name}</p>
                 <p>Epost: {customer.email}</p>
                 <p>Adress: {`${customer.address}, ${customer.zipCode}, ${customer.city}`}</p>
+                <div>
                 {orderLineItems.map(product => {
-                    return <OrderItem key={`${product.articleName} ${product.color} ${product.size}`} orderItem={product} />
+                    return <OrderItem key={`${product.articleName} ${product.color} ${product.size}`} orderProduct={product} />
                 })}
+                </div>
                 <p>Totalkostnad: {totalCost} kr</p>
         </article>
     )

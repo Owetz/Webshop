@@ -21,6 +21,12 @@ article.productView img.productImage {
     min-height: 10rem;
 }
 
+.productInformation form input[type="submit"] {
+    width:10rem;
+    height:2rem;
+    border-radius:.5rem;
+}
+
 .productInformation form label {
     display: flex;
     justify-content: space-between;

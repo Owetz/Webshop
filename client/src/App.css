@@ -1,8 +1,22 @@
 * {
     margin: 0;
+    color: #eeeeee;
+}
+
+body {
+    background: #232931;
+}
+
+input {
+    color: black;
+}
+
+.secondary {
+    background: #4ecca3;
 }
 
 main {
+    padding: 1rem 0;
     min-height: 90vh;
     width: 90vw;
     margin: 0 auto;
@@ -16,6 +30,6 @@ img.productImage {
 
 a {
     text-decoration: none;
-    color: black;
+    color: #eeeeee;
     font-family: Roboto;
 }

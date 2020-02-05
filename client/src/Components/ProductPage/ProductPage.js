@@ -101,7 +101,7 @@ const ProductPage = (props) => {
                     
                     <p>{price*Quantity} kr</p>
 
-                    <button disabled={!valid}>Lägg till i varukorg</button>
+                    <input type="submit" disabled={!valid} className="secondary" value="Lägg till i varukorg" />
                 </form>
 
             </div>

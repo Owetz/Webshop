@@ -1,8 +1,12 @@
-.orderCard {
+article.orderCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     padding: 1rem;
     border-radius: .5rem;
     width: 30rem;
-    height: 20rem;
-    background: floralwhite;
+    min-height: 20rem;
+    margin:.5rem 0;
+    background: #4ecca3;
     box-shadow: 0px 5px 10px -5px black;
 }

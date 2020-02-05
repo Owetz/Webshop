@@ -6,6 +6,7 @@ nav {
     position: -webkit-sticky;
     height: 10vh;
     min-height: 5rem;
+    background: #4ecca3;
 }
 
 nav a {
