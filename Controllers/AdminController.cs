@@ -41,6 +41,13 @@ namespace WebShop.Controllers
         public IActionResult Post([FromBody] Order newOrder){
             
             using(ShopContext context = new ShopContext()) {
+                Customer customer = context.Customers.FirstOrDefault(c => c.Email == newOrder.Customer.Email);
+
+                if(customer != null) {
+                    //newOrder.CustomerId = customer.Id;
+                    newOrder.Customer = customer;
+                }
+
                 context.Orders.Add(newOrder);
                 context.SaveChanges();
             }
