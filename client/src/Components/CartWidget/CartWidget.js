@@ -83,7 +83,7 @@ const CartWidget = (props) => {
                     <input type="text" name="cZip" id="cZip" placeholder="12345" defaultValue={customer ? customer.ZipCode:null}/>
                     <label>Postort: </label>
                     <input type="text" name="cCity" id="cCity" placeholder="Exempelstad" defaultValue={customer ? customer.City:null}/>
-                    <input type="submit" value="Lägg ordern!"/>
+                    <input type="submit" value="Lägg ordern!" disabled={customer ? customer.cart.length < 1 ? true : false :false }/>
                 </form>
             </div>
         </section>
