@@ -28,6 +28,7 @@ namespace WebShop.Controllers
                 return context.Orders.Include(order => order.OrderLineItems).ThenInclude(oli => oli.Product).Include(order => order.Customer).ToList();
             }
         }
+
         [HttpGet("{id}")]
         public Order Get(int id){
             using(ShopContext context = new ShopContext())
