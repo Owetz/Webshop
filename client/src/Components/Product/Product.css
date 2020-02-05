@@ -17,4 +17,9 @@
 }
 .productCard img.productImage {
     width: 20rem;
+    transition: all .35s ease-in-out;
+}
+
+.productCard img.productImage:hover {
+    transform: scale(1.01);
 }
