@@ -8,5 +8,9 @@ article.orderCard {
     min-height: 20rem;
     margin:.5rem 0;
     background: #4ecca3;
-    box-shadow: 0px 5px 10px -5px black;
+    box-shadow: 0px 5px 5px -5px #4ecca3;
+}
+
+article.orderCard .totalCost {
+    align-self: flex-end;
 }

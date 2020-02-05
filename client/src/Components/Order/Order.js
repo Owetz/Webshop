@@ -15,7 +15,7 @@ const Order = (props) => {
                     return <OrderItem key={`${product.articleName} ${product.color} ${product.size}`} orderProduct={product} />
                 })}
                 </div>
-                <p>Totalkostnad: {totalCost} kr</p>
+                <p className="totalCost">Totalkostnad: {totalCost} kr</p>
         </article>
     )
 }
